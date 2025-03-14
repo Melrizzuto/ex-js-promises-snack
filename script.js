@@ -13,12 +13,30 @@ function getPostTitle(id) {
     return new Promise((resolve, reject) => {
         fetch(`https://dummyjson.com/posts/${id}`)
             .then(res => res.json())
+            .then((obj => resolve(obj.title)))
+            .catch(reject);
+    })
+}
+
+
+
+getPostTitle(3)
+    .then(obj => console.log(obj))
+    .catch(error => console.error(error));
+
+
+
+//BONUS (non completato)
+function getPost(id) {
+    return new Promise((resolve, reject) => {
+        fetch(`https://dummyjson.com/posts/${id}`)
+            .then(res => res.json())
             .then((obj => resolve(obj)))
             .catch(reject);
     })
 }
 
-getPostTitle(3)
+getPost(2)
     .then(obj => console.log(obj))
     .catch(error => console.error(error));
 
